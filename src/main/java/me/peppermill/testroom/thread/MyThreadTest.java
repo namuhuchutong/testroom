@@ -2,11 +2,12 @@ package me.peppermill.testroom.thread;
 
 public class MyThreadTest {
 
-    static final CommonVariable commonVariable = new CommonVariable();
 
     public static void main(String[] args) {
-       Thread tester1 = new Thread(() -> {
-           synchronized (commonVariable) {
+        CommonVariable commonVariable = new CommonVariable();
+        Object lock1 = new Object();
+        Thread tester1 = new Thread(() -> {
+           synchronized (lock1) {
            commonVariable.a = 11;
            try {
                Thread.sleep(10000);
@@ -15,9 +16,9 @@ public class MyThreadTest {
                e.printStackTrace();
            }
            }
-       });
-       Thread tester2 = new Thread(() -> {
-           synchronized (commonVariable) {
+        });
+        Thread tester2 = new Thread(() -> {
+           synchronized (lock1) {
            commonVariable.a = 12;
            try {
                Thread.sleep(10000);
@@ -25,8 +26,7 @@ public class MyThreadTest {
            } catch (InterruptedException e) {
                e.printStackTrace();
            }}
-       });
-
+        });
 
        tester1.start();
        tester2.start();
