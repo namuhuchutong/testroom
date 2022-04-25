@@ -14,22 +14,17 @@ public class CalculateSalary {
             case 1:
                 minus = (long) (employee.getSalary() * 0.95);
                 return employee.getSalary() - minus;
-                break;
             case 2:
                 minus = (long) (employee.getSalary() * 0.1);
                 return employee.getSalary() + minus;
-                break;
             case 3:
                 minus = (long) (employee.getSalary() * 0.2);
                 return employee.getSalary() + minus;
-                break;
             case 4:
                 minus = (long) (employee.getSalary() * 0.3);
                 return employee.getSalary() + minus;
-                break;
             case 5:
                 return employee.getSalary() * 2;
-                break;
         }
         return 0;
     }
